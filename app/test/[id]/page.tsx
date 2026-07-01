@@ -126,7 +126,6 @@ export default function TakeTestPage() {
         }),
       }).catch(() => {})
 
-      if (document.fullscreenElement) document.exitFullscreen?.().catch(() => {})
       router.push(
         `/test/${id}/complete?score=${score ?? 'none'}&name=${encodeURIComponent(name)}&forced=${forcedTime ? '1' : '0'}&tabs=${tabSwitchesRef.current}`,
       )

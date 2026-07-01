@@ -1,6 +1,6 @@
 'use client'
 
-import { Suspense } from 'react'
+import { Suspense, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 
@@ -8,6 +8,12 @@ function CompletionContent() {
   const params = useSearchParams()
   const name   = params.get('name') ?? 'Candidate'
   const forced = params.get('forced') === '1'
+
+  useEffect(() => {
+    if (document.fullscreenElement) {
+      document.exitFullscreen?.().catch(() => {})
+    }
+  }, [])
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 relative overflow-hidden"
