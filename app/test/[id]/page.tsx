@@ -299,21 +299,21 @@ export default function TakeTestPage() {
             <span className="font-bold text-slate-900 tracking-tight">Nimbus</span>
           </div>
 
-          <h1 className="text-xl font-black text-slate-900 mb-2">{test.title}</h1>
+          <h1 className="text-2xl font-black text-slate-900 mb-2">{test.title}</h1>
           {test.description && (
-            <p className="text-sm text-slate-500 mb-5 leading-relaxed">{test.description}</p>
+            <p className="text-base text-slate-600 mb-5 leading-relaxed">{test.description}</p>
           )}
 
           <div className="flex gap-3 mb-5 flex-wrap">
-            <span className="text-xs font-semibold text-slate-600 border border-slate-200 bg-slate-50 px-3 py-1.5 rounded-lg">
+            <span className="text-sm font-semibold text-slate-700 border border-slate-200 bg-slate-50 px-3 py-1.5 rounded-lg">
               {test.questions.length} questions
             </span>
             {test.timeLimit && (
-              <span className="text-xs font-semibold text-slate-600 border border-slate-200 bg-slate-50 px-3 py-1.5 rounded-lg">
+              <span className="text-sm font-semibold text-slate-700 border border-slate-200 bg-slate-50 px-3 py-1.5 rounded-lg">
                 {test.timeLimit} min total
               </span>
             )}
-            <span className="text-xs font-semibold text-violet-600 border border-violet-100 bg-violet-50 px-3 py-1.5 rounded-lg">
+            <span className="text-sm font-semibold text-violet-700 border border-violet-100 bg-violet-50 px-3 py-1.5 rounded-lg">
               2 min per aptitude / technical question
             </span>
           </div>
@@ -321,7 +321,7 @@ export default function TakeTestPage() {
           {/* Anti-cheat notice */}
           <div className="bg-amber-50 border border-amber-100 rounded-xl p-3.5 mb-5 flex gap-2.5">
             <span className="text-amber-500 text-base flex-shrink-0">⚠️</span>
-            <div className="text-xs text-amber-800 leading-relaxed space-y-1.5">
+            <div className="text-sm text-amber-900 leading-relaxed space-y-1.5">
               <p><span className="font-bold">Integrity notice:</span> This assessment runs in fullscreen. Copy/paste is disabled and tab switches are recorded and shared with the employer.</p>
               <p><span className="font-bold">Timed questions:</span> Aptitude and technical questions have a <span className="font-bold">2-minute limit</span> per question. When the timer runs out the assessment will automatically move to the next question.</p>
             </div>
@@ -329,7 +329,7 @@ export default function TakeTestPage() {
 
           <div className="flex flex-col gap-4 mb-5">
             <div>
-              <label className="block text-xs font-semibold text-slate-600 mb-1.5">Your name</label>
+              <label className="block text-sm font-semibold text-slate-700 mb-1.5">Your name</label>
               <input
                 placeholder="Jane Smith"
                 value={name}
@@ -338,7 +338,7 @@ export default function TakeTestPage() {
               />
             </div>
             <div>
-              <label className="block text-xs font-semibold text-slate-600 mb-1.5">Your email</label>
+              <label className="block text-sm font-semibold text-slate-700 mb-1.5">Your email</label>
               <input
                 type="email"
                 placeholder="jane@email.com"
@@ -353,13 +353,13 @@ export default function TakeTestPage() {
 
           <button
             onClick={startTest}
-            className="shimmer-btn relative w-full text-white font-bold py-3.5 rounded-xl text-sm shadow-lg shadow-indigo-500/20 hover:scale-[1.02] transition-all"
+            className="shimmer-btn relative w-full text-white font-bold py-3.5 rounded-xl text-base shadow-lg shadow-indigo-500/20 hover:scale-[1.02] transition-all"
             style={{ background: 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 55%, #db2777 100%)' }}
           >
             Begin assessment →
           </button>
 
-          <p className="text-xs text-slate-400 text-center mt-4">
+          <p className="text-sm text-slate-500 text-center mt-4">
             Your answers will be sent directly to the employer.
           </p>
         </div>
