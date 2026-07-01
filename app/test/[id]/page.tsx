@@ -6,14 +6,14 @@ import { getTestById, saveSubmission, generateId } from '@/lib/data'
 import type { Test, Answer, Submission } from '@/lib/types'
 
 const inputCls =
-  'w-full border border-white/10 bg-white/[0.04] rounded-xl px-4 py-3 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-indigo-500/40 focus:border-indigo-500/50 transition-all'
+  'w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-400 transition-all bg-white'
 
 type Phase = 'intro' | 'taking'
 
 const categoryStyle: Record<string, string> = {
-  behavioral: 'bg-blue-500/15 text-blue-300 border border-blue-500/25',
-  aptitude:   'bg-violet-500/15 text-violet-300 border border-violet-500/25',
-  logical:    'bg-emerald-500/15 text-emerald-300 border border-emerald-500/25',
+  behavioral: 'bg-blue-50 text-blue-700 border-blue-100',
+  aptitude:   'bg-violet-50 text-violet-700 border-violet-100',
+  logical:    'bg-emerald-50 text-emerald-700 border-emerald-100',
 }
 
 export default function TakeTestPage() {
@@ -116,11 +116,11 @@ export default function TakeTestPage() {
 
   if (notFound) {
     return (
-      <div className="min-h-screen bg-slate-950 flex items-center justify-center">
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
         <div className="text-center">
           <div className="text-4xl mb-4">🔍</div>
-          <h1 className="text-xl font-semibold text-white mb-2">Test not found</h1>
-          <p className="text-slate-400 text-sm">This link may be invalid or the test was removed.</p>
+          <h1 className="text-xl font-bold text-slate-900 mb-2">Test not found</h1>
+          <p className="text-slate-500 text-sm">This link may be invalid or the test was removed.</p>
         </div>
       </div>
     )
@@ -128,8 +128,8 @@ export default function TakeTestPage() {
 
   if (!test) {
     return (
-      <div className="min-h-screen bg-slate-950 flex items-center justify-center">
-        <div className="w-5 h-5 border-2 border-indigo-500/40 border-t-indigo-400 rounded-full animate-spin" />
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+        <div className="w-5 h-5 border-2 border-slate-200 border-t-indigo-500 rounded-full animate-spin" />
       </div>
     )
   }
@@ -143,14 +143,14 @@ export default function TakeTestPage() {
   /* ── Intro screen ── */
   if (phase === 'intro') {
     return (
-      <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center px-4 relative overflow-hidden">
-        {/* Blobs */}
-        <div className="absolute top-[-100px] left-[-100px] w-80 h-80 bg-indigo-600/15 rounded-full blur-3xl animate-blob" />
-        <div className="absolute bottom-[-100px] right-[-100px] w-72 h-72 bg-violet-600/15 rounded-full blur-3xl animate-blob-2" />
-        <div className="absolute inset-0 bg-dot-grid" />
+      <div className="min-h-screen flex flex-col items-center justify-center px-4 relative overflow-hidden"
+        style={{ background: 'linear-gradient(145deg, #f8fafc 0%, #eff6ff 40%, #faf5ff 70%, #f8fafc 100%)' }}
+      >
+        <div className="absolute top-[-60px] right-[-60px] w-72 h-72 bg-gradient-to-bl from-indigo-100 to-transparent rounded-full blur-3xl opacity-60 animate-blob pointer-events-none" />
+        <div className="absolute bottom-[-60px] left-[-60px] w-64 h-64 bg-gradient-to-tr from-violet-100 to-transparent rounded-full blur-3xl opacity-50 animate-blob-2 pointer-events-none" />
+        <div className="absolute inset-0 bg-dot-grid pointer-events-none" />
 
-        <div className="relative z-10 bg-white/[0.04] border border-white/[0.08] rounded-3xl p-8 w-full max-w-md backdrop-blur-sm">
-          {/* Logo */}
+        <div className="relative z-10 bg-white border border-slate-200 rounded-3xl p-8 w-full max-w-md shadow-xl shadow-slate-200/60">
           <div className="flex items-center gap-2.5 mb-7">
             <div className="relative w-8 h-8 flex items-center justify-center">
               <div className="absolute inset-0 rounded-lg logo-gradient" />
@@ -158,20 +158,20 @@ export default function TakeTestPage() {
                 <path d="M2 11L5 4L7 8L9 5.5L12 11H2Z" fill="white" />
               </svg>
             </div>
-            <span className="font-bold text-white tracking-tight">Nimbus</span>
+            <span className="font-bold text-slate-900 tracking-tight">Nimbus</span>
           </div>
 
-          <h1 className="text-xl font-bold text-white mb-2">{test.title}</h1>
+          <h1 className="text-xl font-black text-slate-900 mb-2">{test.title}</h1>
           {test.description && (
-            <p className="text-sm text-slate-400 mb-5 leading-relaxed">{test.description}</p>
+            <p className="text-sm text-slate-500 mb-5 leading-relaxed">{test.description}</p>
           )}
 
           <div className="flex gap-3 mb-6">
-            <span className="text-xs font-medium text-slate-400 border border-white/10 bg-white/[0.04] px-3 py-1.5 rounded-lg">
+            <span className="text-xs font-semibold text-slate-600 border border-slate-200 bg-slate-50 px-3 py-1.5 rounded-lg">
               {test.questions.length} questions
             </span>
             {test.timeLimit && (
-              <span className="text-xs font-medium text-slate-400 border border-white/10 bg-white/[0.04] px-3 py-1.5 rounded-lg">
+              <span className="text-xs font-semibold text-slate-600 border border-slate-200 bg-slate-50 px-3 py-1.5 rounded-lg">
                 {test.timeLimit} min limit
               </span>
             )}
@@ -179,7 +179,7 @@ export default function TakeTestPage() {
 
           <div className="flex flex-col gap-4 mb-5">
             <div>
-              <label className="block text-xs font-medium text-slate-400 mb-1.5">Your name</label>
+              <label className="block text-xs font-semibold text-slate-600 mb-1.5">Your name</label>
               <input
                 placeholder="Jane Smith"
                 value={name}
@@ -188,7 +188,7 @@ export default function TakeTestPage() {
               />
             </div>
             <div>
-              <label className="block text-xs font-medium text-slate-400 mb-1.5">Your email</label>
+              <label className="block text-xs font-semibold text-slate-600 mb-1.5">Your email</label>
               <input
                 type="email"
                 placeholder="jane@email.com"
@@ -199,17 +199,17 @@ export default function TakeTestPage() {
             </div>
           </div>
 
-          {introError && <p className="text-xs text-red-400 mb-3">{introError}</p>}
+          {introError && <p className="text-xs text-red-600 mb-3 font-medium">{introError}</p>}
 
           <button
             onClick={startTest}
-            className="shimmer-btn relative w-full text-white font-semibold py-3 rounded-xl text-sm transition-all hover:scale-[1.02]"
-            style={{ background: 'linear-gradient(135deg, #6366f1 0%, #a855f7 55%, #ec4899 100%)' }}
+            className="shimmer-btn relative w-full text-white font-bold py-3.5 rounded-xl text-sm shadow-lg shadow-indigo-500/20 hover:scale-[1.02] transition-all"
+            style={{ background: 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 55%, #db2777 100%)' }}
           >
             Begin assessment →
           </button>
 
-          <p className="text-xs text-slate-600 text-center mt-4">
+          <p className="text-xs text-slate-400 text-center mt-4">
             Your answers will be sent directly to the employer.
           </p>
         </div>
@@ -224,9 +224,9 @@ export default function TakeTestPage() {
   const isTimeLow = timeLeft !== null && timeLeft < 60
 
   return (
-    <div className="min-h-screen bg-slate-950">
+    <div className="min-h-screen bg-slate-50">
       {/* Top bar */}
-      <div className="sticky top-0 z-10 bg-slate-950/90 backdrop-blur-xl border-b border-white/[0.06]">
+      <div className="sticky top-0 z-10 bg-white border-b border-slate-100">
         <div className="max-w-2xl mx-auto px-6 h-14 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
             <div className="relative w-7 h-7 flex items-center justify-center">
@@ -235,17 +235,17 @@ export default function TakeTestPage() {
                 <path d="M2 11L5 4L7 8L9 5.5L12 11H2Z" fill="white" />
               </svg>
             </div>
-            <span className="text-sm font-bold text-white">Nimbus</span>
+            <span className="text-sm font-bold text-slate-900">Nimbus</span>
           </div>
           <div className="flex items-center gap-4">
             <span className="text-xs text-slate-500">
-              {currentIdx + 1} <span className="text-slate-700">/</span> {test.questions.length}
+              {currentIdx + 1} <span className="text-slate-300">/</span> {test.questions.length}
             </span>
             {timeLeft !== null && (
-              <span className={`text-xs font-mono font-semibold px-2.5 py-1 rounded-lg border transition-colors ${
+              <span className={`text-xs font-mono font-bold px-2.5 py-1 rounded-lg border ${
                 isTimeLow
-                  ? 'text-red-400 border-red-500/30 bg-red-500/10'
-                  : 'text-slate-400 border-white/10 bg-white/[0.04]'
+                  ? 'text-red-600 border-red-200 bg-red-50'
+                  : 'text-slate-700 border-slate-200 bg-slate-50'
               }`}>
                 {formatTime(timeLeft)}
               </span>
@@ -253,12 +253,12 @@ export default function TakeTestPage() {
           </div>
         </div>
         {/* Gradient progress bar */}
-        <div className="h-0.5 bg-white/[0.04]">
+        <div className="h-1 bg-slate-100">
           <div
             className="h-full transition-all duration-500"
             style={{
               width: `${progress}%`,
-              background: 'linear-gradient(90deg, #6366f1, #a855f7, #ec4899)',
+              background: 'linear-gradient(90deg, #4f46e5, #7c3aed, #db2777)',
             }}
           />
         </div>
@@ -267,14 +267,14 @@ export default function TakeTestPage() {
       {/* Question */}
       <div className="max-w-2xl mx-auto px-6 py-12">
         <div className="mb-4">
-          <span className={`text-[11px] font-semibold uppercase tracking-widest px-3 py-1.5 rounded-lg ${
+          <span className={`text-[11px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-lg border ${
             categoryStyle[question.category] ?? categoryStyle.logical
           }`}>
             {question.category}
           </span>
         </div>
 
-        <h2 className="text-xl font-semibold text-white mb-8 leading-snug">{question.text}</h2>
+        <h2 className="text-xl font-bold text-slate-900 mb-8 leading-snug">{question.text}</h2>
 
         {question.type === 'open-ended' ? (
           <textarea
@@ -293,14 +293,14 @@ export default function TakeTestPage() {
                   key={opt.id}
                   className={`flex items-center gap-4 p-4 rounded-2xl border cursor-pointer transition-all duration-200 ${
                     selected
-                      ? 'border-indigo-500/50 bg-indigo-500/10 shadow-lg shadow-indigo-500/10'
-                      : 'border-white/[0.07] bg-white/[0.03] hover:bg-white/[0.06] hover:border-white/15'
+                      ? 'border-indigo-300 bg-indigo-50 shadow-sm shadow-indigo-100'
+                      : 'border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50 card-shadow'
                   }`}
                 >
                   <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-all ${
-                    selected ? 'border-indigo-400 bg-indigo-500/20' : 'border-slate-600'
+                    selected ? 'border-indigo-500 bg-indigo-500' : 'border-slate-300'
                   }`}>
-                    {selected && <div className="w-2.5 h-2.5 rounded-full bg-indigo-400" />}
+                    {selected && <div className="w-2 h-2 rounded-full bg-white" />}
                   </div>
                   <input
                     type="radio"
@@ -310,7 +310,7 @@ export default function TakeTestPage() {
                     checked={selected}
                     onChange={() => setCurrentAnswer(opt.id)}
                   />
-                  <span className={`text-sm leading-relaxed ${selected ? 'text-white' : 'text-slate-300'}`}>
+                  <span className={`text-sm leading-relaxed ${selected ? 'text-indigo-900 font-medium' : 'text-slate-700'}`}>
                     {opt.text}
                   </span>
                 </label>
@@ -324,15 +324,15 @@ export default function TakeTestPage() {
           <button
             onClick={() => { if (currentIdx > 0) saveCurrentAndGo(currentIdx - 1) }}
             disabled={currentIdx === 0}
-            className="text-sm text-slate-500 hover:text-slate-300 disabled:opacity-0 transition-colors font-medium"
+            className="text-sm text-slate-400 hover:text-slate-700 disabled:opacity-0 transition-colors font-medium"
           >
             ← Previous
           </button>
 
           <button
             onClick={() => saveCurrentAndGo(isLast ? 'submit' : currentIdx + 1)}
-            className="shimmer-btn relative text-white font-semibold px-6 py-2.5 rounded-xl text-sm transition-all hover:scale-105"
-            style={{ background: 'linear-gradient(135deg, #6366f1 0%, #a855f7 55%, #ec4899 100%)' }}
+            className="shimmer-btn relative text-white font-bold px-7 py-3 rounded-xl text-sm shadow-lg shadow-indigo-500/20 hover:scale-105 transition-transform duration-200"
+            style={{ background: 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 55%, #db2777 100%)' }}
           >
             {isLast ? 'Submit assessment' : 'Next →'}
           </button>
