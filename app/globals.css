@@ -85,7 +85,7 @@
    GRADIENT TEXT — ON DARK BG
 ──────────────────────────────── */
 .text-gradient-hero {
-  background: linear-gradient(140deg, #e0e7ff 0%, #a5b4fc 30%, #c084fc 65%, #f9a8d4 100%);
+  background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 35%, #c026d3 70%, #e879f9 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
