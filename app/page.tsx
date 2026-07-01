@@ -257,6 +257,18 @@ export default function LandingPage() {
               </span>
             ))}
           </div>
+
+          {/* Hero video */}
+          <div className="mt-16 mx-auto max-w-4xl rounded-2xl overflow-hidden shadow-2xl shadow-indigo-500/10 border border-slate-200/80 ring-1 ring-slate-900/5">
+            <video
+              src="/bubble.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-auto block"
+            />
+          </div>
         </div>
 
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
