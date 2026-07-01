@@ -175,7 +175,7 @@ export default function LandingPage() {
 
       {/* ── NAV ─────────────────────────────────── */}
       <nav className="fixed top-0 left-0 right-0 z-50 border-b border-slate-100 bg-white/90 backdrop-blur-xl">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        <div className="w-full px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
             <div className="relative w-8 h-8 flex items-center justify-center">
               <div className="absolute inset-0 rounded-lg logo-gradient" />
@@ -185,14 +185,14 @@ export default function LandingPage() {
             </div>
             <span className="font-bold text-slate-900 tracking-tight text-[15px]">Nimbus</span>
           </div>
-          <div className="hidden sm:flex items-center gap-6 text-sm font-medium text-slate-500">
+          <div className="hidden sm:flex items-center gap-6 text-sm font-medium text-slate-800">
             <a href="#problem" className="hover:text-slate-900 transition-colors">Why Nimbus</a>
             <a href="#features" className="hover:text-slate-900 transition-colors">Features</a>
             <a href="#testimonials" className="hover:text-slate-900 transition-colors">Reviews</a>
             <a href="#faq" className="hover:text-slate-900 transition-colors">FAQ</a>
           </div>
           <div className="flex items-center gap-4">
-            <Link href="/auth/login" className="text-sm text-slate-500 hover:text-slate-900 transition-colors font-medium">
+            <Link href="/auth/login" className="text-sm text-slate-800 hover:text-slate-900 transition-colors font-medium">
               Log in
             </Link>
             <Link
