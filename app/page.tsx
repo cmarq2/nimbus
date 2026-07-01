@@ -480,58 +480,68 @@ export default function LandingPage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {/* Without Nimbus */}
-            <div className="bg-red-50 border border-red-100 rounded-2xl p-8">
-              <div className="flex items-center gap-2 mb-6">
-                <div className="w-7 h-7 bg-red-100 rounded-lg flex items-center justify-center">
-                  <svg width="14" height="14" fill="none" stroke="#ef4444" strokeWidth="2.5" viewBox="0 0 24 24">
-                    <path d="M18 6L6 18M6 6l12 12" strokeLinecap="round" />
-                  </svg>
+            {/* Without Nimbus — dark slate */}
+            <div className="bg-slate-900 rounded-3xl p-8 relative overflow-hidden">
+              <div className="absolute inset-0 bg-dot-grid-dark pointer-events-none opacity-60" />
+              <div className="relative z-10">
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="w-8 h-8 bg-white/10 rounded-xl flex items-center justify-center">
+                    <svg width="15" height="15" fill="none" stroke="#94a3b8" strokeWidth="2.5" viewBox="0 0 24 24">
+                      <path d="M18 6L6 18M6 6l12 12" strokeLinecap="round" />
+                    </svg>
+                  </div>
+                  <span className="font-black text-white text-xl">Without Nimbus</span>
                 </div>
-                <span className="font-black text-slate-900 text-[15px]">Without Nimbus</span>
+                <ul className="space-y-5">
+                  {[
+                    'Weeks spent manually screening resumes',
+                    'Inconsistent interviews with no shared criteria',
+                    'Hiring decisions driven by gut feel and bias',
+                    'No insight into how a candidate actually thinks',
+                    'Expensive mis-hires that take months to fix',
+                    'Hard to compare candidates after interviews',
+                  ].map(item => (
+                    <li key={item} className="flex items-start gap-3 text-base text-slate-400">
+                      <span className="text-slate-600 mt-0.5 flex-shrink-0 font-bold">✕</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <ul className="space-y-4">
-                {[
-                  'Weeks spent manually screening resumes',
-                  'Inconsistent interviews with no shared criteria',
-                  'Hiring decisions driven by gut feel and bias',
-                  'No insight into how a candidate actually thinks',
-                  'Expensive mis-hires that take months to fix',
-                  'Hard to compare candidates after interviews',
-                ].map(item => (
-                  <li key={item} className="flex items-start gap-3 text-sm text-slate-600">
-                    <span className="text-red-400 mt-0.5 flex-shrink-0">✕</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
             </div>
 
-            {/* With Nimbus */}
-            <div className="bg-emerald-50 border border-emerald-100 rounded-2xl p-8">
-              <div className="flex items-center gap-2 mb-6">
-                <div className="w-7 h-7 bg-emerald-100 rounded-lg flex items-center justify-center">
-                  <svg width="14" height="14" fill="none" stroke="#10b981" strokeWidth="2.5" viewBox="0 0 24 24">
-                    <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
+            {/* With Nimbus — brand gradient */}
+            <div className="rounded-3xl p-8 relative overflow-hidden"
+              style={{ background: 'linear-gradient(145deg, #4f46e5 0%, #7c3aed 50%, #db2777 100%)' }}
+            >
+              <div className="absolute inset-0 bg-dot-grid-dark pointer-events-none opacity-20" />
+              {/* Soft glow orb */}
+              <div className="absolute top-[-40px] right-[-40px] w-48 h-48 bg-white/10 rounded-full blur-2xl pointer-events-none" />
+              <div className="relative z-10">
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="w-8 h-8 bg-white/20 rounded-xl flex items-center justify-center">
+                    <svg width="15" height="15" fill="none" stroke="white" strokeWidth="2.5" viewBox="0 0 24 24">
+                      <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+                  <span className="font-black text-white text-xl">With Nimbus</span>
                 </div>
-                <span className="font-black text-slate-900 text-[15px]">With Nimbus</span>
+                <ul className="space-y-5">
+                  {[
+                    'Candidates screened same-day with a shareable link',
+                    'Every candidate evaluated on the exact same criteria',
+                    'Objective scores that back every decision with data',
+                    'Full behavioral and cognitive insight for each applicant',
+                    '40% fewer mis-hires thanks to skill-based selection',
+                    'Side-by-side results dashboard for easy comparison',
+                  ].map(item => (
+                    <li key={item} className="flex items-start gap-3 text-base text-white/90">
+                      <span className="text-white mt-0.5 flex-shrink-0 font-bold">✓</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <ul className="space-y-4">
-                {[
-                  'Candidates screened same-day with a shareable link',
-                  'Every candidate evaluated on the exact same criteria',
-                  'Objective scores that back every decision with data',
-                  'Full behavioral and cognitive insight for each applicant',
-                  '40% fewer mis-hires thanks to skill-based selection',
-                  'Side-by-side results dashboard for easy comparison',
-                ].map(item => (
-                  <li key={item} className="flex items-start gap-3 text-sm text-slate-700">
-                    <span className="text-emerald-500 mt-0.5 flex-shrink-0">✓</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
             </div>
           </div>
         </div>
