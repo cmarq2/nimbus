@@ -306,9 +306,10 @@ export default function TakeTestPage() {
           {/* Anti-cheat notice */}
           <div className="bg-amber-50 border border-amber-100 rounded-xl p-3.5 mb-5 flex gap-2.5">
             <span className="text-amber-500 text-base flex-shrink-0">⚠️</span>
-            <p className="text-xs text-amber-800 leading-relaxed">
-              <span className="font-bold">Integrity notice:</span> This assessment runs in fullscreen. Copy/paste is disabled and tab switches are recorded and shared with the employer.
-            </p>
+            <div className="text-xs text-amber-800 leading-relaxed space-y-1.5">
+              <p><span className="font-bold">Integrity notice:</span> This assessment runs in fullscreen. Copy/paste is disabled and tab switches are recorded and shared with the employer.</p>
+              <p><span className="font-bold">Timed questions:</span> Aptitude and technical questions have a <span className="font-bold">2-minute limit</span> per question. When the timer runs out the assessment will automatically move to the next question.</p>
+            </div>
           </div>
 
           <div className="flex flex-col gap-4 mb-5">

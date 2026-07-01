@@ -6,19 +6,8 @@ import Link from 'next/link'
 
 function CompletionContent() {
   const params = useSearchParams()
-  const name = params.get('name') ?? 'Candidate'
-  const scoreParam = params.get('score')
+  const name   = params.get('name') ?? 'Candidate'
   const forced = params.get('forced') === '1'
-  const score = scoreParam && scoreParam !== 'none' ? parseInt(scoreParam) : null
-
-  const scoreConfig =
-    score === null
-      ? null
-      : score >= 70
-      ? { label: 'Great performance!', bg: 'bg-emerald-50', border: 'border-emerald-100', text: 'text-emerald-700', num: 'text-emerald-600' }
-      : score >= 50
-      ? { label: 'Good effort!', bg: 'bg-amber-50', border: 'border-amber-100', text: 'text-amber-700', num: 'text-amber-600' }
-      : { label: 'Keep practicing!', bg: 'bg-red-50', border: 'border-red-100', text: 'text-red-700', num: 'text-red-500' }
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 relative overflow-hidden"
@@ -29,35 +18,21 @@ function CompletionContent() {
       <div className="absolute inset-0 bg-dot-grid pointer-events-none" />
 
       <div className="relative z-10 bg-white border border-slate-200 rounded-3xl p-10 w-full max-w-md shadow-xl shadow-slate-200/60 text-center">
-        {/* Success icon */}
+        {/* Icon */}
         <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-indigo-50 border border-indigo-100 flex items-center justify-center">
-          {forced ? (
-            <svg width="24" height="24" fill="none" stroke="#4f46e5" strokeWidth="2.5" viewBox="0 0 24 24">
-              <path d="M12 8v4l3 3M12 22C6.48 22 2 17.52 2 12S6.48 2 12 2s10 4.48 10 10-4.48 10-10 10z" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          ) : (
-            <svg width="24" height="24" fill="none" stroke="#4f46e5" strokeWidth="2.5" viewBox="0 0 24 24">
-              <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          )}
+          <svg width="24" height="24" fill="none" stroke="#4f46e5" strokeWidth="2.5" viewBox="0 0 24 24">
+            <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
         </div>
 
         <h1 className="text-2xl font-black text-slate-900 mb-2 tracking-tight">
-          {forced ? "Time's up!" : 'Assessment complete!'}
+          Assessment complete!
         </h1>
-        <p className="text-slate-500 mb-7 text-sm leading-relaxed">
+        <p className="text-slate-500 mb-8 text-sm leading-relaxed">
           {forced
-            ? `Your time ran out, ${name.split(' ')[0]}. Your answers have been submitted.`
+            ? `Time ran out, ${name.split(' ')[0]}. Your answers have been submitted.`
             : `Well done, ${name.split(' ')[0]}. Your responses have been recorded.`}
         </p>
-
-        {score !== null && scoreConfig && (
-          <div className={`${scoreConfig.bg} border ${scoreConfig.border} rounded-2xl p-6 mb-7`}>
-            <div className={`text-5xl font-black mb-1 ${scoreConfig.num}`}>{score}%</div>
-            <div className={`text-sm font-bold ${scoreConfig.text} mb-0.5`}>{scoreConfig.label}</div>
-            <div className="text-xs text-slate-400">Score on scored questions</div>
-          </div>
-        )}
 
         <div className="bg-indigo-50 border border-indigo-100 rounded-2xl p-4 text-left mb-7">
           <p className="text-sm text-indigo-800 font-bold mb-1">What happens next?</p>
