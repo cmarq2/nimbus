@@ -9,7 +9,7 @@ const PER_QUESTION_SECONDS = 120
 const TIMED_CATEGORIES = new Set(['aptitude', 'logical'])
 
 const inputCls =
-  'w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-400 transition-all bg-white'
+  'w-full border border-slate-200 rounded-xl px-4 py-3 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-400 transition-all bg-white'
 
 type Phase = 'intro' | 'taking'
 
@@ -447,7 +447,7 @@ export default function TakeTestPage() {
           )}
         </div>
 
-        <h2 className="text-xl font-bold text-slate-900 mb-8 leading-snug">{question.text}</h2>
+        <h2 className="text-2xl font-bold text-slate-900 mb-8 leading-snug">{question.text}</h2>
 
         {question.type === 'open-ended' ? (
           <textarea
@@ -483,7 +483,7 @@ export default function TakeTestPage() {
                     checked={selected}
                     onChange={() => setCurrentAnswer(opt.id)}
                   />
-                  <span className={`text-sm leading-relaxed ${selected ? 'text-indigo-900 font-medium' : 'text-slate-700'}`}>
+                  <span className={`text-base leading-relaxed ${selected ? 'text-indigo-900 font-medium' : 'text-slate-800'}`}>
                     {opt.text}
                   </span>
                 </label>
