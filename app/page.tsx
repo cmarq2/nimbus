@@ -207,40 +207,47 @@ export default function LandingPage() {
       </nav>
 
       {/* ── HERO ────────────────────────────────── */}
-      <section className="relative bg-white overflow-hidden pt-16">
-        <div className="absolute top-[-80px] right-[-100px] w-[650px] h-[650px] bg-gradient-to-bl from-indigo-100 via-violet-50 to-transparent rounded-full blur-3xl opacity-75 animate-blob pointer-events-none" />
-        <div className="absolute bottom-0 left-[-80px] w-[500px] h-[500px] bg-gradient-to-tr from-pink-50 via-fuchsia-50 to-transparent rounded-full blur-3xl opacity-60 animate-blob-2 pointer-events-none" />
-        <div className="absolute top-[35%] left-[28%] w-[420px] h-[420px] bg-violet-50 rounded-full blur-3xl opacity-40 animate-blob-3 pointer-events-none" />
-        <div className="absolute inset-0 bg-dot-grid pointer-events-none" />
+      <section className="relative overflow-hidden pt-16 min-h-screen flex items-center">
+        {/* Background video */}
+        <video
+          src="/bubble.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        {/* Dark overlay so text stays readable */}
+        <div className="absolute inset-0 bg-black/50" />
 
-        <div className="relative z-10 max-w-6xl mx-auto px-6 py-24 sm:py-32 text-center">
-          <div className="animate-fade-up inline-flex items-center gap-2.5 mb-8 px-4 py-2 rounded-full border border-indigo-100 bg-indigo-50 animate-float">
-            <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full" />
-            <span className="text-xs font-semibold text-indigo-600 tracking-wide">
+        <div className="relative z-10 max-w-6xl mx-auto px-6 py-24 sm:py-32 text-center w-full">
+          <div className="animate-fade-up inline-flex items-center gap-2.5 mb-8 px-4 py-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm animate-float">
+            <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full" />
+            <span className="text-xs font-semibold text-white/90 tracking-wide">
               Trusted by 500+ hiring teams worldwide
             </span>
           </div>
 
-          <h1 className="animate-fade-up-1 text-5xl sm:text-[68px] font-black leading-[1.04] tracking-tight mb-6 text-slate-900">
+          <h1 className="animate-fade-up-1 text-5xl sm:text-[68px] font-black leading-[1.04] tracking-tight mb-6 text-white">
             Hire confidently with<br />
-            <span className="text-gradient">science-backed tests</span>
+            <span className="text-gradient-hero">science-backed tests</span>
           </h1>
 
-          <p className="animate-fade-up-2 text-xl text-slate-500 mb-12 max-w-md mx-auto leading-relaxed">
+          <p className="animate-fade-up-2 text-xl text-white/75 mb-12 max-w-md mx-auto leading-relaxed">
             Send behavioral, aptitude, and logical assessments to candidates in seconds. Get objective data to make smarter hiring decisions.
           </p>
 
           <div className="animate-fade-up-3 flex items-center justify-center gap-4 mb-14">
             <Link
               href="/auth/signup"
-              className="text-white font-bold px-8 py-4 rounded-xl text-sm shadow-xl shadow-indigo-500/25 hover:opacity-90 hover:scale-105 transition-all duration-200"
+              className="text-white font-bold px-8 py-4 rounded-xl text-sm shadow-xl shadow-black/30 hover:opacity-90 hover:scale-105 transition-all duration-200"
               style={{ background: 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 55%, #db2777 100%)' }}
             >
               Sign up →
             </Link>
             <Link
               href="/dashboard"
-              className="text-sm font-bold text-slate-700 border border-slate-200 bg-white hover:bg-slate-50 hover:border-slate-300 px-8 py-4 rounded-xl transition-all shadow-sm"
+              className="text-sm font-bold text-white border border-white/30 bg-white/10 backdrop-blur-sm hover:bg-white/20 px-8 py-4 rounded-xl transition-all"
             >
               View demo
             </Link>
@@ -248,30 +255,18 @@ export default function LandingPage() {
 
           <div className="flex items-center justify-center gap-3 flex-wrap">
             {[
-              { label: 'Behavioral', cls: 'border-blue-100 text-blue-600 bg-blue-50' },
-              { label: 'Aptitude', cls: 'border-violet-100 text-violet-600 bg-violet-50' },
-              { label: 'Logical Reasoning', cls: 'border-fuchsia-100 text-fuchsia-600 bg-fuchsia-50' },
+              { label: 'Behavioral', cls: 'border-blue-300/30 text-blue-200 bg-blue-500/10' },
+              { label: 'Aptitude', cls: 'border-violet-300/30 text-violet-200 bg-violet-500/10' },
+              { label: 'Logical Reasoning', cls: 'border-fuchsia-300/30 text-fuchsia-200 bg-fuchsia-500/10' },
             ].map(p => (
-              <span key={p.label} className={`text-xs font-semibold px-3.5 py-1.5 rounded-full border ${p.cls}`}>
+              <span key={p.label} className={`text-xs font-semibold px-3.5 py-1.5 rounded-full border backdrop-blur-sm ${p.cls}`}>
                 {p.label}
               </span>
             ))}
           </div>
-
-          {/* Hero video */}
-          <div className="mt-16 mx-auto max-w-4xl rounded-2xl overflow-hidden shadow-2xl shadow-indigo-500/10 border border-slate-200/80 ring-1 ring-slate-900/5">
-            <video
-              src="/bubble.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-auto block"
-            />
-          </div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
       </section>
 
       {/* ── STATS ───────────────────────────────── */}
