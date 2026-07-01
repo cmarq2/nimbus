@@ -9,7 +9,7 @@ const features = [
     icon: '🧠',
     iconBg: 'bg-blue-50',
     tag: 'bg-blue-50 text-blue-600 border-blue-100',
-    hoverCls: 'hover:border-blue-200 hover:shadow-blue-50',
+    hoverCls: 'hover:border-blue-200',
   },
   {
     label: 'Aptitude',
@@ -19,7 +19,7 @@ const features = [
     icon: '📊',
     iconBg: 'bg-violet-50',
     tag: 'bg-violet-50 text-violet-600 border-violet-100',
-    hoverCls: 'hover:border-violet-200 hover:shadow-violet-50',
+    hoverCls: 'hover:border-violet-200',
   },
   {
     label: 'Logical',
@@ -29,7 +29,7 @@ const features = [
     icon: '🔬',
     iconBg: 'bg-emerald-50',
     tag: 'bg-emerald-50 text-emerald-600 border-emerald-100',
-    hoverCls: 'hover:border-emerald-200 hover:shadow-emerald-50',
+    hoverCls: 'hover:border-emerald-200',
   },
 ]
 
@@ -57,6 +57,118 @@ const steps = [
   },
 ]
 
+const problems = [
+  {
+    icon: '🎭',
+    title: 'Resumes don\'t predict performance',
+    body: 'A polished CV shows career history, not cognitive ability or real-world problem-solving. You\'re making six-figure decisions based on bullet points.',
+    bg: 'bg-red-50',
+    border: 'border-red-100',
+    tag: 'text-red-500',
+  },
+  {
+    icon: '⚖️',
+    title: 'Interviews are inconsistent',
+    body: 'When different interviewers ask different questions, candidates aren\'t being compared fairly. Unconscious bias quietly shapes every hiring decision.',
+    bg: 'bg-amber-50',
+    border: 'border-amber-100',
+    tag: 'text-amber-500',
+  },
+  {
+    icon: '💸',
+    title: 'Bad hires cost more than you think',
+    body: 'The average cost of a mis-hire is 30% of their annual salary — lost productivity, team disruption, and starting over. It adds up fast.',
+    bg: 'bg-orange-50',
+    border: 'border-orange-100',
+    tag: 'text-orange-500',
+  },
+]
+
+const benefits = [
+  {
+    icon: '📊',
+    title: 'Objective data, every time',
+    body: 'Every candidate is measured against the same criteria. Remove subjectivity and give your team a fair, consistent way to compare talent — regardless of who\'s interviewing.',
+    color: 'text-indigo-600',
+    bg: 'bg-indigo-50',
+  },
+  {
+    icon: '⚡',
+    title: 'Results in hours, not weeks',
+    body: 'Candidates complete assessments in 15–30 minutes. Get scored results the same day. Move fast on top talent before your competitors do.',
+    color: 'text-violet-600',
+    bg: 'bg-violet-50',
+  },
+  {
+    icon: '🎯',
+    title: 'Surface hidden talent',
+    body: 'Some of the best candidates look average on paper. Skill-based assessments reveal true potential and critical thinking ability that a resume never could.',
+    color: 'text-emerald-600',
+    bg: 'bg-emerald-50',
+  },
+  {
+    icon: '🛡️',
+    title: 'Reduce unconscious bias',
+    body: 'Structured assessments evaluate candidates on what actually matters — skills and thinking ability — rather than background, presentation style, or personal rapport.',
+    color: 'text-blue-600',
+    bg: 'bg-blue-50',
+  },
+]
+
+const testimonials = [
+  {
+    quote: 'Nimbus helped us cut time-to-hire by 50%. We now have real data to back every single hiring decision we make.',
+    name: 'Sarah M.',
+    role: 'VP of People',
+    company: 'Apex Technologies',
+    initials: 'SM',
+    grad: 'from-indigo-500 to-violet-500',
+  },
+  {
+    quote: "We've hired 8 engineers through Nimbus over the past year. Every single one has outperformed our previous hires who went through traditional interviews.",
+    name: 'James R.',
+    role: 'CTO',
+    company: 'Bolt Labs',
+    initials: 'JR',
+    grad: 'from-violet-500 to-fuchsia-500',
+  },
+  {
+    quote: "As a small team we can't afford bad hires. Nimbus gives us the confidence to make the right call without wasting weeks on screening.",
+    name: 'Priya K.',
+    role: 'Founder',
+    company: 'Luminary Studios',
+    initials: 'PK',
+    grad: 'from-fuchsia-500 to-pink-500',
+  },
+]
+
+const faqs = [
+  {
+    q: 'How does a candidate take the test?',
+    a: 'You share a unique link directly with your candidate. They click it, enter their name and email, and complete the assessment — no account, no download, no friction.',
+  },
+  {
+    q: 'What types of questions are included?',
+    a: 'Nimbus supports behavioral (open-ended scenario questions), aptitude (numerical and verbal reasoning), and logical reasoning (pattern recognition, deductive thinking). You can mix all three in one test.',
+  },
+  {
+    q: 'How is scoring calculated?',
+    a: 'Multiple-choice questions are scored automatically the moment a candidate submits. Open-ended answers appear in your dashboard for you to review alongside the quantitative scores.',
+  },
+  {
+    q: 'Is there a free plan?',
+    a: 'Yes — Nimbus is free to use for small hiring teams. Create unlimited tests, share with candidates, and review all results at no cost. No credit card required.',
+  },
+  {
+    q: 'Can I customize the questions?',
+    a: 'Absolutely. You write every question yourself so assessments are specific to your role and company. Add as many questions as you need, set a time limit, and publish when ready.',
+  },
+  {
+    q: 'How long does it take candidates to complete?',
+    a: 'Most assessments take 15–30 minutes depending on the number of questions. Candidates can complete them on any device, at any time — making it easy to reach busy applicants.',
+  },
+]
+
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
@@ -73,13 +185,19 @@ export default function LandingPage() {
             </div>
             <span className="font-bold text-slate-900 tracking-tight text-[15px]">Nimbus</span>
           </div>
+          <div className="hidden sm:flex items-center gap-6 text-sm font-medium text-slate-500">
+            <a href="#problem" className="hover:text-slate-900 transition-colors">Why Nimbus</a>
+            <a href="#features" className="hover:text-slate-900 transition-colors">Features</a>
+            <a href="#testimonials" className="hover:text-slate-900 transition-colors">Reviews</a>
+            <a href="#faq" className="hover:text-slate-900 transition-colors">FAQ</a>
+          </div>
           <div className="flex items-center gap-4">
             <Link href="/auth/login" className="text-sm text-slate-500 hover:text-slate-900 transition-colors font-medium">
               Log in
             </Link>
             <Link
               href="/auth/signup"
-              className="shimmer-btn relative text-sm font-semibold text-white px-5 py-2.5 rounded-xl shadow-md shadow-indigo-500/20"
+              className="text-sm font-semibold text-white px-5 py-2.5 rounded-xl shadow-md shadow-indigo-500/20 hover:opacity-90 transition-opacity"
               style={{ background: 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 55%, #db2777 100%)' }}
             >
               Get started free
@@ -90,14 +208,12 @@ export default function LandingPage() {
 
       {/* ── HERO ────────────────────────────────── */}
       <section className="relative bg-white overflow-hidden pt-16">
-        {/* Pastel orbs — barely visible, add color character */}
         <div className="absolute top-[-80px] right-[-100px] w-[650px] h-[650px] bg-gradient-to-bl from-indigo-100 via-violet-50 to-transparent rounded-full blur-3xl opacity-75 animate-blob pointer-events-none" />
         <div className="absolute bottom-0 left-[-80px] w-[500px] h-[500px] bg-gradient-to-tr from-pink-50 via-fuchsia-50 to-transparent rounded-full blur-3xl opacity-60 animate-blob-2 pointer-events-none" />
         <div className="absolute top-[35%] left-[28%] w-[420px] h-[420px] bg-violet-50 rounded-full blur-3xl opacity-40 animate-blob-3 pointer-events-none" />
         <div className="absolute inset-0 bg-dot-grid pointer-events-none" />
 
         <div className="relative z-10 max-w-6xl mx-auto px-6 py-24 sm:py-32 text-center">
-          {/* Floating badge */}
           <div className="animate-fade-up inline-flex items-center gap-2.5 mb-8 px-4 py-2 rounded-full border border-indigo-100 bg-indigo-50 animate-float">
             <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full" />
             <span className="text-xs font-semibold text-indigo-600 tracking-wide">
@@ -105,21 +221,19 @@ export default function LandingPage() {
             </span>
           </div>
 
-          {/* Headline */}
           <h1 className="animate-fade-up-1 text-5xl sm:text-[68px] font-black leading-[1.04] tracking-tight mb-6 text-slate-900">
             Hire confidently with<br />
             <span className="text-gradient">science-backed tests</span>
           </h1>
 
           <p className="animate-fade-up-2 text-xl text-slate-500 mb-12 max-w-md mx-auto leading-relaxed">
-            Send behavioral, aptitude, and logical assessments to candidates in seconds. Get data to hire smarter.
+            Send behavioral, aptitude, and logical assessments to candidates in seconds. Get objective data to make smarter hiring decisions.
           </p>
 
-          {/* CTAs */}
           <div className="animate-fade-up-3 flex items-center justify-center gap-4 mb-14">
             <Link
               href="/auth/signup"
-              className="shimmer-btn relative text-white font-bold px-8 py-4 rounded-xl text-sm shadow-xl shadow-indigo-500/25 hover:scale-105 transition-transform duration-200"
+              className="text-white font-bold px-8 py-4 rounded-xl text-sm shadow-xl shadow-indigo-500/25 hover:opacity-90 hover:scale-105 transition-all duration-200"
               style={{ background: 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 55%, #db2777 100%)' }}
             >
               Start for free →
@@ -132,7 +246,6 @@ export default function LandingPage() {
             </Link>
           </div>
 
-          {/* Pill badges */}
           <div className="flex items-center justify-center gap-3 flex-wrap">
             {[
               { label: 'Behavioral', cls: 'border-blue-100 text-blue-600 bg-blue-50' },
@@ -157,10 +270,7 @@ export default function LandingPage() {
             { value: '93%', label: 'Candidate satisfaction', sub: 'Average test-taker rating' },
             { value: '40%', label: 'Fewer bad hires', sub: 'Data-driven selection impact' },
           ].map((s, i) => (
-            <div
-              key={s.label}
-              className={`text-center py-10 px-6 ${i < 2 ? 'sm:border-r border-slate-200' : ''}`}
-            >
+            <div key={s.label} className={`text-center py-10 px-6 ${i < 2 ? 'sm:border-r border-slate-200' : ''}`}>
               <div className="text-5xl font-black mb-2 text-gradient-stat animate-count-up">{s.value}</div>
               <div className="text-sm font-bold text-slate-800 mb-0.5">{s.label}</div>
               <div className="text-xs text-slate-400">{s.sub}</div>
@@ -169,8 +279,76 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* ── THE PROBLEM ─────────────────────────── */}
+      <section id="problem" className="relative bg-white overflow-hidden">
+        <div className="absolute inset-0 bg-dot-grid pointer-events-none" />
+        <div className="relative z-10 max-w-6xl mx-auto px-6 py-24">
+          <div className="text-center mb-16">
+            <span className="text-xs font-bold uppercase tracking-widest text-gradient mb-4 block">
+              The Problem
+            </span>
+            <h2 className="text-4xl font-black text-slate-900 tracking-tight mb-4">
+              Traditional hiring misses<br />great candidates
+            </h2>
+            <p className="text-slate-500 max-w-lg mx-auto leading-relaxed">
+              Most employers make expensive decisions based on incomplete data. Resumes and gut-feel interviews are unreliable — and the results show.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {problems.map(p => (
+              <div key={p.title} className={`${p.bg} border ${p.border} rounded-2xl p-7`}>
+                <div className="text-3xl mb-4">{p.icon}</div>
+                <h3 className="font-black text-slate-900 mb-3 text-[15px] leading-snug">{p.title}</h3>
+                <p className="text-sm text-slate-600 leading-relaxed">{p.body}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Bridge sentence */}
+          <div className="mt-14 text-center">
+            <p className="text-lg font-semibold text-slate-700 max-w-xl mx-auto leading-relaxed">
+              There&apos;s a smarter way to identify top talent —{' '}
+              <span className="text-gradient">one that relies on data, not intuition.</span>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── WHY NIMBUS WORKS ────────────────────── */}
+      <section className="bg-slate-50 border-y border-slate-100">
+        <div className="max-w-6xl mx-auto px-6 py-24">
+          <div className="text-center mb-16">
+            <span className="text-xs font-bold uppercase tracking-widest text-gradient mb-4 block">
+              Why It Works
+            </span>
+            <h2 className="text-4xl font-black text-slate-900 tracking-tight mb-4">
+              Built for employers who care<br />about outcomes
+            </h2>
+            <p className="text-slate-500 max-w-md mx-auto">
+              Nimbus replaces guesswork with structured, repeatable evaluation — so every hire is backed by evidence.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {benefits.map(b => (
+              <div
+                key={b.title}
+                className="group bg-white border border-slate-200 rounded-2xl p-8 card-shadow card-shadow-hover"
+              >
+                <div className={`w-12 h-12 ${b.bg} rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}>
+                  <span className="text-xl">{b.icon}</span>
+                </div>
+                <h3 className={`font-black text-slate-900 mb-3 text-lg`}>{b.title}</h3>
+                <p className="text-sm text-slate-500 leading-relaxed">{b.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── FEATURES ────────────────────────────── */}
-      <section className="relative bg-white overflow-hidden">
+      <section id="features" className="relative bg-white overflow-hidden">
         <div className="absolute inset-0 bg-grid-lines pointer-events-none" />
         <div className="relative z-10 max-w-6xl mx-auto px-6 py-24">
           <div className="text-center mb-16">
@@ -181,7 +359,7 @@ export default function LandingPage() {
               Three types. One platform.
             </h2>
             <p className="text-slate-500 max-w-sm mx-auto">
-              Everything you need to evaluate candidates holistically.
+              Mix and match to build assessments that match the exact role you&apos;re hiring for.
             </p>
           </div>
 
@@ -218,7 +396,7 @@ export default function LandingPage() {
               How It Works
             </span>
             <h2 className="text-4xl font-black text-white tracking-tight mb-4">Simple by design</h2>
-            <p className="text-slate-400">Up and running in under 5 minutes.</p>
+            <p className="text-slate-400">Up and running in under 5 minutes. No technical setup required.</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 relative">
@@ -241,6 +419,148 @@ export default function LandingPage() {
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-500/30 to-transparent" />
       </section>
 
+      {/* ── TESTIMONIALS ────────────────────────── */}
+      <section id="testimonials" className="bg-slate-50 border-y border-slate-100">
+        <div className="max-w-6xl mx-auto px-6 py-24">
+          <div className="text-center mb-16">
+            <span className="text-xs font-bold uppercase tracking-widest text-gradient mb-4 block">
+              What Employers Say
+            </span>
+            <h2 className="text-4xl font-black text-slate-900 tracking-tight mb-4">
+              Trusted by teams of every size
+            </h2>
+            <p className="text-slate-500 max-w-sm mx-auto">
+              From startups to scale-ups, employers use Nimbus to hire smarter every day.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {testimonials.map(t => (
+              <div key={t.name} className="bg-white border border-slate-200 rounded-2xl p-7 card-shadow flex flex-col">
+                {/* Stars */}
+                <div className="flex gap-1 mb-5">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                    </svg>
+                  ))}
+                </div>
+
+                <p className="text-sm text-slate-700 leading-relaxed flex-1 mb-6">&ldquo;{t.quote}&rdquo;</p>
+
+                <div className="flex items-center gap-3">
+                  <div className={`w-9 h-9 rounded-xl bg-gradient-to-br ${t.grad} flex items-center justify-center text-xs font-black text-white flex-shrink-0`}>
+                    {t.initials}
+                  </div>
+                  <div>
+                    <div className="text-sm font-bold text-slate-900">{t.name}</div>
+                    <div className="text-xs text-slate-400">{t.role}, {t.company}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── COMPARISON ──────────────────────────── */}
+      <section className="relative bg-white overflow-hidden">
+        <div className="absolute inset-0 bg-dot-grid pointer-events-none" />
+        <div className="relative z-10 max-w-5xl mx-auto px-6 py-24">
+          <div className="text-center mb-16">
+            <span className="text-xs font-bold uppercase tracking-widest text-gradient mb-4 block">
+              The Difference
+            </span>
+            <h2 className="text-4xl font-black text-slate-900 tracking-tight mb-4">
+              Nimbus vs. traditional hiring
+            </h2>
+            <p className="text-slate-500 max-w-md mx-auto">
+              See exactly what changes when you bring objective assessments into your hiring process.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {/* Without Nimbus */}
+            <div className="bg-red-50 border border-red-100 rounded-2xl p-8">
+              <div className="flex items-center gap-2 mb-6">
+                <div className="w-7 h-7 bg-red-100 rounded-lg flex items-center justify-center">
+                  <svg width="14" height="14" fill="none" stroke="#ef4444" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <path d="M18 6L6 18M6 6l12 12" strokeLinecap="round" />
+                  </svg>
+                </div>
+                <span className="font-black text-slate-900 text-[15px]">Without Nimbus</span>
+              </div>
+              <ul className="space-y-4">
+                {[
+                  'Weeks spent manually screening resumes',
+                  'Inconsistent interviews with no shared criteria',
+                  'Hiring decisions driven by gut feel and bias',
+                  'No insight into how a candidate actually thinks',
+                  'Expensive mis-hires that take months to fix',
+                  'Hard to compare candidates after interviews',
+                ].map(item => (
+                  <li key={item} className="flex items-start gap-3 text-sm text-slate-600">
+                    <span className="text-red-400 mt-0.5 flex-shrink-0">✕</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* With Nimbus */}
+            <div className="bg-emerald-50 border border-emerald-100 rounded-2xl p-8">
+              <div className="flex items-center gap-2 mb-6">
+                <div className="w-7 h-7 bg-emerald-100 rounded-lg flex items-center justify-center">
+                  <svg width="14" height="14" fill="none" stroke="#10b981" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+                <span className="font-black text-slate-900 text-[15px]">With Nimbus</span>
+              </div>
+              <ul className="space-y-4">
+                {[
+                  'Candidates screened same-day with a shareable link',
+                  'Every candidate evaluated on the exact same criteria',
+                  'Objective scores that back every decision with data',
+                  'Full behavioral and cognitive insight for each applicant',
+                  '40% fewer mis-hires thanks to skill-based selection',
+                  'Side-by-side results dashboard for easy comparison',
+                ].map(item => (
+                  <li key={item} className="flex items-start gap-3 text-sm text-slate-700">
+                    <span className="text-emerald-500 mt-0.5 flex-shrink-0">✓</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── FAQ ─────────────────────────────────── */}
+      <section id="faq" className="bg-slate-50 border-y border-slate-100">
+        <div className="max-w-4xl mx-auto px-6 py-24">
+          <div className="text-center mb-16">
+            <span className="text-xs font-bold uppercase tracking-widest text-gradient mb-4 block">
+              FAQ
+            </span>
+            <h2 className="text-4xl font-black text-slate-900 tracking-tight mb-4">
+              Common questions
+            </h2>
+            <p className="text-slate-500">Everything you need to know before getting started.</p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {faqs.map(f => (
+              <div key={f.q} className="bg-white border border-slate-200 rounded-2xl p-6 card-shadow">
+                <h3 className="font-black text-slate-900 mb-2 text-[15px] leading-snug">{f.q}</h3>
+                <p className="text-sm text-slate-500 leading-relaxed">{f.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── CTA ─────────────────────────────────── */}
       <section className="relative bg-white overflow-hidden">
         <div className="absolute inset-0 bg-dot-grid pointer-events-none" />
@@ -256,11 +576,11 @@ export default function LandingPage() {
             Hire smarter,<br />starting today
           </h2>
           <p className="text-slate-500 mb-10 max-w-sm mx-auto text-lg leading-relaxed">
-            Join hundreds of teams who use Nimbus to find the right candidates faster.
+            Join hundreds of teams using Nimbus to find the right candidates faster — with data they can trust.
           </p>
           <Link
             href="/auth/signup"
-            className="shimmer-btn inline-block text-white font-bold px-10 py-4 rounded-xl text-sm shadow-xl shadow-indigo-500/25 hover:scale-105 transition-transform duration-200"
+            className="inline-block text-white font-bold px-10 py-4 rounded-xl text-sm shadow-xl shadow-indigo-500/25 hover:opacity-90 hover:scale-105 transition-all duration-200"
             style={{ background: 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 55%, #db2777 100%)' }}
           >
             Create your first test — it&apos;s free
@@ -271,7 +591,7 @@ export default function LandingPage() {
 
       {/* ── FOOTER ──────────────────────────────── */}
       <footer className="bg-slate-50 border-t border-slate-100">
-        <div className="max-w-6xl mx-auto px-6 py-10 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2.5">
             <div className="relative w-7 h-7 flex items-center justify-center">
               <div className="absolute inset-0 rounded-lg logo-gradient" />
@@ -280,6 +600,12 @@ export default function LandingPage() {
               </svg>
             </div>
             <span className="font-bold text-slate-900 tracking-tight text-sm">Nimbus</span>
+          </div>
+          <div className="flex items-center gap-6 text-xs text-slate-400">
+            <a href="#problem" className="hover:text-slate-600 transition-colors">Why Nimbus</a>
+            <a href="#features" className="hover:text-slate-600 transition-colors">Features</a>
+            <a href="#faq" className="hover:text-slate-600 transition-colors">FAQ</a>
+            <Link href="/auth/signup" className="hover:text-slate-600 transition-colors">Get started</Link>
           </div>
           <p className="text-xs text-slate-400">© 2026 Nimbus. All rights reserved.</p>
         </div>
