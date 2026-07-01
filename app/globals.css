@@ -132,24 +132,11 @@
 .gradient-border > * { position: relative; z-index: 1; }
 
 /* ────────────────────────────────
-   SHIMMER BUTTON
+   GRADIENT BUTTON (no animation)
 ──────────────────────────────── */
 .shimmer-btn {
   position: relative;
   overflow: hidden;
-}
-.shimmer-btn::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    105deg,
-    transparent 40%,
-    rgba(255,255,255,0.3) 50%,
-    transparent 60%
-  );
-  background-size: 400% 100%;
-  animation: shimmer 2.5s infinite;
 }
 
 /* ────────────────────────────────
