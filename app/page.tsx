@@ -218,7 +218,7 @@ export default function LandingPage() {
           className="absolute inset-0 w-full h-full object-cover"
         />
         {/* Dark overlay so text stays readable */}
-        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 bg-black/65" />
 
         <div className="relative z-10 max-w-6xl mx-auto px-6 py-24 sm:py-32 text-center w-full">
           <div className="animate-fade-up inline-flex items-center gap-2.5 mb-8 px-4 py-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm animate-float">
