@@ -5,7 +5,7 @@ import { useParams, useRouter } from 'next/navigation'
 import { getTestById, saveSubmission, generateId } from '@/lib/data'
 import type { Test, Answer, Submission } from '@/lib/types'
 
-const PER_QUESTION_SECONDS = 120
+const PER_QUESTION_SECONDS = 90
 const TIMED_CATEGORIES = new Set(['aptitude', 'logical'])
 
 const inputCls =
@@ -314,7 +314,7 @@ export default function TakeTestPage() {
               </span>
             )}
             <span className="text-sm font-semibold text-violet-700 border border-violet-100 bg-violet-50 px-3 py-1.5 rounded-lg">
-              2 min per aptitude / technical question
+              90 sec per aptitude / technical question
             </span>
           </div>
 
@@ -432,24 +432,22 @@ export default function TakeTestPage() {
 
       {/* Question */}
       <div className="max-w-2xl mx-auto px-6 py-12">
-        <div className="mb-4 flex items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            <span className={`text-[11px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-lg border ${
-              categoryStyle[question.category] ?? categoryStyle.logical
-            }`}>
-              {question.category}
-            </span>
-            {isTimed && (
-              <span className="text-[11px] text-slate-400 font-medium">2 min limit</span>
-            )}
-          </div>
-          {/* Per-question circular timer */}
-          {isTimed && questionTimeLeft !== null && (
-            <QuestionTimer timeLeft={questionTimeLeft} total={PER_QUESTION_SECONDS} />
-          )}
+        <div className="mb-4 flex items-center gap-3">
+          <span className={`text-[11px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-lg border ${
+            categoryStyle[question.category] ?? categoryStyle.logical
+          }`}>
+            {question.category}
+          </span>
         </div>
 
         <h2 className="text-2xl font-bold text-slate-900 mb-8 leading-snug">{question.text}</h2>
+
+        {/* Per-question circular timer — sits right above the answers */}
+        {isTimed && questionTimeLeft !== null && (
+          <div className="flex justify-end mb-5">
+            <QuestionTimer timeLeft={questionTimeLeft} total={PER_QUESTION_SECONDS} />
+          </div>
+        )}
 
         {question.type === 'open-ended' ? (
           <textarea
