@@ -228,12 +228,12 @@ export default function LandingPage() {
             </span>
           </div>
 
-          <h1 className="animate-fade-up-1 text-5xl sm:text-[68px] font-black leading-[1.04] tracking-tight mb-6 text-white [text-shadow:0_2px_20px_rgba(0,0,0,0.6),0_1px_4px_rgba(0,0,0,0.8)]">
+          <h1 className="animate-fade-up-1 text-5xl sm:text-[68px] font-black leading-[1.04] tracking-tight mb-6 text-white">
             Hire confidently with<br />
             <span className="text-gradient-hero">science-backed tests</span>
           </h1>
 
-          <p className="animate-fade-up-2 text-xl text-white/75 mb-12 max-w-md mx-auto leading-relaxed [text-shadow:0_1px_8px_rgba(0,0,0,0.7)]">
+          <p className="animate-fade-up-2 text-xl text-white/75 mb-12 max-w-md mx-auto leading-relaxed">
             Send behavioral, aptitude, and logical assessments to candidates in seconds. Get objective data to make smarter hiring decisions.
           </p>
 
