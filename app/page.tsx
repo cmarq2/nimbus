@@ -279,8 +279,8 @@ export default function LandingPage() {
           ].map((s, i) => (
             <div key={s.label} className={`text-center py-10 px-6 ${i < 2 ? 'sm:border-r border-slate-200' : ''}`}>
               <div className="text-5xl font-black mb-2 text-gradient-stat animate-count-up">{s.value}</div>
-              <div className="text-sm font-bold text-slate-800 mb-0.5">{s.label}</div>
-              <div className="text-xs text-slate-400">{s.sub}</div>
+              <div className="text-base font-bold text-slate-800 mb-0.5">{s.label}</div>
+              <div className="text-sm text-slate-600">{s.sub}</div>
             </div>
           ))}
         </div>
@@ -297,7 +297,7 @@ export default function LandingPage() {
             <h2 className="text-4xl font-black text-slate-900 tracking-tight mb-4">
               Traditional hiring misses<br />great candidates
             </h2>
-            <p className="text-slate-500 max-w-lg mx-auto leading-relaxed">
+            <p className="text-base text-slate-700 max-w-lg mx-auto leading-relaxed">
               Most employers make expensive decisions based on incomplete data. Resumes and gut-feel interviews are unreliable — and the results show.
             </p>
           </div>
@@ -306,8 +306,8 @@ export default function LandingPage() {
             {problems.map(p => (
               <div key={p.title} className={`${p.bg} border ${p.border} rounded-2xl p-7`}>
                 <div className="text-3xl mb-4">{p.icon}</div>
-                <h3 className="font-black text-slate-900 mb-3 text-[15px] leading-snug">{p.title}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed">{p.body}</p>
+                <h3 className="font-black text-slate-900 mb-3 text-base leading-snug">{p.title}</h3>
+                <p className="text-base text-slate-700 leading-relaxed">{p.body}</p>
               </div>
             ))}
           </div>
@@ -332,7 +332,7 @@ export default function LandingPage() {
             <h2 className="text-4xl font-black text-slate-900 tracking-tight mb-4">
               Built for employers who care<br />about outcomes
             </h2>
-            <p className="text-slate-500 max-w-md mx-auto">
+            <p className="text-base text-slate-700 max-w-md mx-auto">
               Nimbus replaces guesswork with structured, repeatable evaluation — so every hire is backed by evidence.
             </p>
           </div>
@@ -347,7 +347,7 @@ export default function LandingPage() {
                   <span className="text-xl">{b.icon}</span>
                 </div>
                 <h3 className={`font-black text-slate-900 mb-3 text-lg`}>{b.title}</h3>
-                <p className="text-sm text-slate-500 leading-relaxed">{b.body}</p>
+                <p className="text-base text-slate-600 leading-relaxed">{b.body}</p>
               </div>
             ))}
           </div>
@@ -365,7 +365,7 @@ export default function LandingPage() {
             <h2 className="text-4xl font-black text-slate-900 tracking-tight mb-4">
               Three types. One platform.
             </h2>
-            <p className="text-slate-500 max-w-sm mx-auto">
+            <p className="text-base text-slate-700 max-w-sm mx-auto">
               Mix and match to build assessments that match the exact role you&apos;re hiring for.
             </p>
           </div>
@@ -382,8 +382,8 @@ export default function LandingPage() {
                 <span className={`text-[11px] font-bold uppercase tracking-widest border rounded-md px-2 py-0.5 ${f.tag} mb-3 inline-block`}>
                   {f.label}
                 </span>
-                <h3 className="font-bold text-slate-900 mb-3 text-[15px]">{f.title}</h3>
-                <p className="text-sm text-slate-500 leading-relaxed">{f.description}</p>
+                <h3 className="font-bold text-slate-900 mb-3 text-base">{f.title}</h3>
+                <p className="text-base text-slate-600 leading-relaxed">{f.description}</p>
               </div>
             ))}
           </div>
@@ -436,7 +436,7 @@ export default function LandingPage() {
             <h2 className="text-4xl font-black text-slate-900 tracking-tight mb-4">
               Trusted by teams of every size
             </h2>
-            <p className="text-slate-500 max-w-sm mx-auto">
+            <p className="text-base text-slate-700 max-w-sm mx-auto">
               From startups to scale-ups, employers use Nimbus to hire smarter every day.
             </p>
           </div>
@@ -453,7 +453,7 @@ export default function LandingPage() {
                   ))}
                 </div>
 
-                <p className="text-sm text-slate-700 leading-relaxed flex-1 mb-6">&ldquo;{t.quote}&rdquo;</p>
+                <p className="text-base text-slate-800 leading-relaxed flex-1 mb-6">&ldquo;{t.quote}&rdquo;</p>
 
                 <div className="flex items-center gap-3">
                   <div className={`w-9 h-9 rounded-xl bg-gradient-to-br ${t.grad} flex items-center justify-center text-xs font-black text-white flex-shrink-0`}>
@@ -461,7 +461,7 @@ export default function LandingPage() {
                   </div>
                   <div>
                     <div className="text-sm font-bold text-slate-900">{t.name}</div>
-                    <div className="text-xs text-slate-400">{t.role}, {t.company}</div>
+                    <div className="text-sm text-slate-600">{t.role}, {t.company}</div>
                   </div>
                 </div>
               </div>
@@ -481,7 +481,7 @@ export default function LandingPage() {
             <h2 className="text-4xl font-black text-slate-900 tracking-tight mb-4">
               Nimbus vs. traditional hiring
             </h2>
-            <p className="text-slate-500 max-w-md mx-auto">
+            <p className="text-base text-slate-700 max-w-md mx-auto">
               See exactly what changes when you bring objective assessments into your hiring process.
             </p>
           </div>
@@ -564,14 +564,14 @@ export default function LandingPage() {
             <h2 className="text-4xl font-black text-slate-900 tracking-tight mb-4">
               Common questions
             </h2>
-            <p className="text-slate-500">Everything you need to know before getting started.</p>
+            <p className="text-base text-slate-700">Everything you need to know before getting started.</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {faqs.map(f => (
               <div key={f.q} className="bg-white border border-slate-200 rounded-2xl p-6 card-shadow">
-                <h3 className="font-black text-slate-900 mb-2 text-[15px] leading-snug">{f.q}</h3>
-                <p className="text-sm text-slate-500 leading-relaxed">{f.a}</p>
+                <h3 className="font-black text-slate-900 mb-2 text-base leading-snug">{f.q}</h3>
+                <p className="text-base text-slate-600 leading-relaxed">{f.a}</p>
               </div>
             ))}
           </div>
@@ -592,7 +592,7 @@ export default function LandingPage() {
           <h2 className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight mb-5">
             Hire smarter,<br />starting today
           </h2>
-          <p className="text-slate-500 mb-10 max-w-sm mx-auto text-lg leading-relaxed">
+          <p className="text-slate-700 mb-10 max-w-sm mx-auto text-lg leading-relaxed">
             Join hundreds of teams using Nimbus to find the right candidates faster — with data they can trust.
           </p>
           <Link
@@ -602,7 +602,7 @@ export default function LandingPage() {
           >
             Create your first test — it&apos;s free
           </Link>
-          <p className="text-xs text-slate-400 mt-4">No credit card required · Free forever for small teams</p>
+          <p className="text-sm text-slate-500 mt-4">No credit card required · Free forever for small teams</p>
         </div>
       </section>
 
