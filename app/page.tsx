@@ -200,7 +200,7 @@ export default function LandingPage() {
               className="text-sm font-semibold text-white px-5 py-2.5 rounded-xl shadow-md shadow-indigo-500/20 hover:opacity-90 transition-opacity"
               style={{ background: 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 55%, #db2777 100%)' }}
             >
-              Get started free
+              Sign up
             </Link>
           </div>
         </div>
@@ -236,7 +236,7 @@ export default function LandingPage() {
               className="text-white font-bold px-8 py-4 rounded-xl text-sm shadow-xl shadow-indigo-500/25 hover:opacity-90 hover:scale-105 transition-all duration-200"
               style={{ background: 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 55%, #db2777 100%)' }}
             >
-              Start for free →
+              Sign up →
             </Link>
             <Link
               href="/dashboard"
@@ -615,7 +615,7 @@ export default function LandingPage() {
             <a href="#problem" className="hover:text-slate-600 transition-colors">Why Nimbus</a>
             <a href="#features" className="hover:text-slate-600 transition-colors">Features</a>
             <a href="#faq" className="hover:text-slate-600 transition-colors">FAQ</a>
-            <Link href="/auth/signup" className="hover:text-slate-600 transition-colors">Get started</Link>
+            <Link href="/auth/signup" className="hover:text-slate-600 transition-colors">Sign up</Link>
           </div>
           <p className="text-xs text-slate-400">© 2026 Nimbus. All rights reserved.</p>
         </div>
