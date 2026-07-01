@@ -110,6 +110,22 @@ export default function TakeTestPage() {
         status: 'completed',
       }
       saveSubmission(submission)
+
+      // Notify employer — fire and forget
+      fetch('/api/notify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          candidateName: name,
+          candidateEmail: email,
+          testTitle: test.title,
+          score,
+          totalQuestions: test.questions.length,
+          correctAnswers: correct,
+          tabSwitches: tabSwitchesRef.current,
+        }),
+      }).catch(() => {})
+
       if (document.fullscreenElement) document.exitFullscreen?.().catch(() => {})
       router.push(
         `/test/${id}/complete?score=${score ?? 'none'}&name=${encodeURIComponent(name)}&forced=${forcedTime ? '1' : '0'}&tabs=${tabSwitchesRef.current}`,
