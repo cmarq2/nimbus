@@ -225,7 +225,10 @@ export default function LandingPage() {
             <div className="hidden sm:block absolute top-5 left-[22%] right-[22%] h-px bg-gradient-to-r from-indigo-500/30 via-violet-500/30 to-fuchsia-500/30" />
             {steps.map((step, i) => (
               <div key={step.num} className="text-center animate-fade-up" style={{ animationDelay: `${i * 0.15}s` }}>
-                <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${step.color} flex items-center justify-center mx-auto mb-6 ${step.glow} animate-pulse-glow`}>
+                <div
+                  className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${step.color} flex items-center justify-center mx-auto mb-6 ${step.glow} animate-float`}
+                  style={{ animationDelay: `${i * 0.4}s` }}
+                >
                   <span className="text-white font-black text-sm">{step.num}</span>
                 </div>
                 <h3 className="font-bold text-white mb-3">{step.title}</h3>
