@@ -323,31 +323,52 @@ export default function LandingPage() {
       </section>
 
       {/* ── WHY NIMBUS WORKS ────────────────────── */}
-      <section className="bg-slate-50 border-y border-slate-100">
-        <div className="max-w-6xl mx-auto px-6 py-24">
+      <section className="relative bg-slate-900 overflow-hidden">
+        {/* Ambient orbs */}
+        <div className="absolute top-[-80px] left-[4%] w-[500px] h-[500px] bg-indigo-600/12 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-[-60px] right-[4%] w-96 h-96 bg-violet-600/12 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-[45%] left-[42%] w-72 h-72 bg-fuchsia-600/8 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute inset-0 bg-dot-grid-dark pointer-events-none" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-500/40 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-500/30 to-transparent" />
+
+        <div className="relative z-10 max-w-6xl mx-auto px-6 py-28">
           <div className="text-center mb-16">
-            <span className="text-xs font-bold uppercase tracking-widest text-gradient mb-4 block">
+            <span className="text-xs font-bold uppercase tracking-widest text-gradient-hero mb-4 block">
               Why It Works
             </span>
-            <h2 className="text-4xl font-black text-slate-900 tracking-tight mb-4">
+            <h2 className="text-4xl sm:text-5xl font-black text-white tracking-tight mb-5">
               Built for employers who care<br />about outcomes
             </h2>
-            <p className="text-base text-slate-700 max-w-md mx-auto">
+            <p className="text-base text-slate-400 max-w-md mx-auto leading-relaxed">
               Nimbus replaces guesswork with structured, repeatable evaluation — so every hire is backed by evidence.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {benefits.map(b => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {benefits.map((b, i) => (
               <div
                 key={b.title}
-                className="group bg-white border border-slate-200 rounded-2xl p-8 card-shadow card-shadow-hover"
+                className="group relative bg-white/[0.04] border border-white/10 rounded-2xl p-8 hover:bg-white/[0.07] hover:border-white/20 transition-all duration-300 overflow-hidden"
               >
-                <div className={`w-12 h-12 ${b.bg} rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}>
+                {/* Per-card hover glow */}
+                <div
+                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{ background: 'radial-gradient(ellipse at 20% 20%, rgba(99,102,241,0.13), transparent 65%)' }}
+                />
+                {/* Card number */}
+                <span className="absolute top-6 right-7 text-[11px] font-black text-white/10 tracking-widest select-none">
+                  0{i + 1}
+                </span>
+
+                <div
+                  className="relative w-12 h-12 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg"
+                  style={{ background: 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 55%, #db2777 100%)' }}
+                >
                   <span className="text-xl">{b.icon}</span>
                 </div>
-                <h3 className={`font-black text-slate-900 mb-3 text-lg`}>{b.title}</h3>
-                <p className="text-base text-slate-600 leading-relaxed">{b.body}</p>
+                <h3 className="relative font-black text-white mb-3 text-lg">{b.title}</h3>
+                <p className="relative text-base text-slate-400 leading-relaxed">{b.body}</p>
               </div>
             ))}
           </div>
