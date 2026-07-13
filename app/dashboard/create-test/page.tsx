@@ -91,7 +91,7 @@ export default function CreateTestPage() {
     setQuestions(prev => prev.filter(q => q.id !== id))
   }
 
-  function handleSave(status: 'draft' | 'active') {
+  async function handleSave(status: 'draft' | 'active') {
     setSaveError('')
     if (!title.trim()) { setSaveError('Test title is required.'); return }
     if (questions.length === 0) { setSaveError('Add at least one question.'); return }
@@ -108,7 +108,7 @@ export default function CreateTestPage() {
       createdAt: new Date().toISOString(),
       timeLimit: timeLimit ? parseInt(timeLimit) : undefined,
     }
-    saveTest(test)
+    await saveTest(test)
     router.push(`/dashboard/tests/${test.id}`)
   }
 

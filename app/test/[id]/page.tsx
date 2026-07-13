@@ -78,15 +78,19 @@ export default function TakeTestPage() {
   const advancingRef = useRef(false)
 
   useEffect(() => {
-    const t = getTestById(id)
-    if (!t) { setNotFound(true); return }
-    setTest(t)
-    if (t.timeLimit) setTimeLeft(t.timeLimit * 60)
+    let cancelled = false
+    getTestById(id).then(t => {
+      if (cancelled) return
+      if (!t) { setNotFound(true); return }
+      setTest(t)
+      if (t.timeLimit) setTimeLeft(t.timeLimit * 60)
+    })
+    return () => { cancelled = true }
   }, [id])
 
   // ── Submit ──────────────────────────────────────────────────────────
   const submitTest = useCallback(
-    (finalAnswers: Answer[], forcedTime?: boolean) => {
+    async (finalAnswers: Answer[], forcedTime?: boolean) => {
       if (!test) return
       const mcQuestions = test.questions.filter(q => q.type === 'multiple-choice')
       let correct = 0
@@ -109,7 +113,7 @@ export default function TakeTestPage() {
         completedAt: new Date().toISOString(),
         status: 'completed',
       }
-      saveSubmission(submission)
+      await saveSubmission(submission)
 
       // Notify employer — fire and forget
       fetch('/api/notify', {

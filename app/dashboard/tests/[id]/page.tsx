@@ -41,10 +41,12 @@ export default function TestDetailPage() {
   useEffect(() => {
     const user = getUser()
     if (!user) { router.push('/auth/login'); return }
-    const t = getTestById(id)
-    if (!t) { router.push('/dashboard'); return }
-    setTest(t)
-    setSubmissions(getSubmissions(id))
+    ;(async () => {
+      const t = await getTestById(id)
+      if (!t) { router.push('/dashboard'); return }
+      setTest(t)
+      setSubmissions(await getSubmissions(id))
+    })()
     setOrigin(window.location.origin)
   }, [id, router])
 

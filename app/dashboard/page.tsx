@@ -56,28 +56,42 @@ function CopyButton({ text }: { text: string }) {
   )
 }
 
+async function loadTestsWithCounts(employerId: string) {
+  const tests = await getTests(employerId)
+  const counts = await Promise.all(tests.map(t => getSubmissions(t.id)))
+  const submissionCounts = Object.fromEntries(tests.map((t, i) => [t.id, counts[i].length]))
+  return { tests, submissionCounts }
+}
+
 export default function DashboardPage() {
   const router = useRouter()
   const [tests, setTests] = useState<Test[]>([])
+  const [submissionCounts, setSubmissionCounts] = useState<Record<string, number>>({})
   const [origin, setOrigin] = useState('')
 
   useEffect(() => {
     const user = getUser()
     if (!user) { router.push('/auth/login'); return }
-    seedSampleData(user.id)
-    setTests(getTests(user.id))
+    ;(async () => {
+      await seedSampleData(user.id)
+      const { tests, submissionCounts } = await loadTestsWithCounts(user.id)
+      setTests(tests)
+      setSubmissionCounts(submissionCounts)
+    })()
     setOrigin(window.location.origin)
   }, [router])
 
-  function handleDelete(testId: string) {
+  async function handleDelete(testId: string) {
     const user = getUser()
     if (!user) return
     if (!confirm('Delete this test? This cannot be undone.')) return
-    deleteTest(testId, user.id)
-    setTests(getTests(user.id))
+    await deleteTest(testId, user.id)
+    const { tests, submissionCounts } = await loadTestsWithCounts(user.id)
+    setTests(tests)
+    setSubmissionCounts(submissionCounts)
   }
 
-  const totalSubmissions = tests.reduce((acc, t) => acc + getSubmissions(t.id).length, 0)
+  const totalSubmissions = Object.values(submissionCounts).reduce((acc, n) => acc + n, 0)
   const activeTests = tests.filter(t => t.status === 'active').length
 
   const stats = [
@@ -145,7 +159,7 @@ export default function DashboardPage() {
         ) : (
           <div className="flex flex-col gap-3">
             {tests.map(test => {
-              const submissions = getSubmissions(test.id)
+              const submissionCount = submissionCounts[test.id] ?? 0
               const testUrl = `${origin}/test/${test.id}`
               const catStyle = categoryStyle[test.type] ?? categoryStyle.mixed
               const dotColor = categoryDot[test.type] ?? categoryDot.mixed
@@ -177,7 +191,7 @@ export default function DashboardPage() {
                       <div className="flex items-center gap-4 text-xs text-slate-400">
                         <span>{test.questions.length} questions</span>
                         {test.timeLimit && <span>{test.timeLimit} min</span>}
-                        <span>{submissions.length} submission{submissions.length !== 1 ? 's' : ''}</span>
+                        <span>{submissionCount} submission{submissionCount !== 1 ? 's' : ''}</span>
                       </div>
                     </div>
 

@@ -18,57 +18,48 @@ export function clearUser(): void {
   localStorage.removeItem('nimbus:user')
 }
 
-export function getTests(employerId: string): Test[] {
-  if (typeof window === 'undefined') return []
-  const raw = localStorage.getItem(`nimbus:tests:${employerId}`)
-  return raw ? (JSON.parse(raw) as Test[]) : []
+export async function getTests(employerId: string): Promise<Test[]> {
+  const res = await fetch(`/api/tests?employerId=${encodeURIComponent(employerId)}`)
+  if (!res.ok) return []
+  return (await res.json()) as Test[]
 }
 
-export function saveTest(test: Test): void {
-  const tests = getTests(test.employerId)
-  const idx = tests.findIndex(t => t.id === test.id)
-  if (idx >= 0) tests[idx] = test
-  else tests.push(test)
-  localStorage.setItem(`nimbus:tests:${test.employerId}`, JSON.stringify(tests))
+export async function saveTest(test: Test): Promise<void> {
+  await fetch('/api/tests', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(test),
+  })
 }
 
-export function getTestById(testId: string): Test | null {
-  if (typeof window === 'undefined') return null
-  const allKeys = Object.keys(localStorage).filter(k => k.startsWith('nimbus:tests:'))
-  for (const key of allKeys) {
-    const tests = JSON.parse(localStorage.getItem(key) ?? '[]') as Test[]
-    const t = tests.find(t => t.id === testId)
-    if (t) return t
-  }
-  return null
+export async function getTestById(testId: string): Promise<Test | null> {
+  const res = await fetch(`/api/tests/${encodeURIComponent(testId)}`)
+  if (!res.ok) return null
+  return (await res.json()) as Test
 }
 
-export function deleteTest(testId: string, employerId: string): void {
-  const tests = getTests(employerId).filter(t => t.id !== testId)
-  localStorage.setItem(`nimbus:tests:${employerId}`, JSON.stringify(tests))
+export async function deleteTest(testId: string, employerId: string): Promise<void> {
+  await fetch(`/api/tests/${encodeURIComponent(testId)}?employerId=${encodeURIComponent(employerId)}`, {
+    method: 'DELETE',
+  })
 }
 
-export function getSubmissions(testId: string): Submission[] {
-  if (typeof window === 'undefined') return []
-  const raw = localStorage.getItem(`nimbus:submissions:${testId}`)
-  return raw ? (JSON.parse(raw) as Submission[]) : []
+export async function getSubmissions(testId: string): Promise<Submission[]> {
+  const res = await fetch(`/api/submissions?testId=${encodeURIComponent(testId)}`)
+  if (!res.ok) return []
+  return (await res.json()) as Submission[]
 }
 
-export function saveSubmission(submission: Submission): void {
-  const subs = getSubmissions(submission.testId)
-  const idx = subs.findIndex(s => s.id === submission.id)
-  if (idx >= 0) subs[idx] = submission
-  else subs.push(submission)
-  localStorage.setItem(`nimbus:submissions:${submission.testId}`, JSON.stringify(subs))
+export async function saveSubmission(submission: Submission): Promise<void> {
+  await fetch('/api/submissions', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(submission),
+  })
 }
 
-export function getAllSubmissionsForEmployer(employerId: string): Submission[] {
-  const tests = getTests(employerId)
-  return tests.flatMap(t => getSubmissions(t.id))
-}
-
-export function seedSampleData(employerId: string): void {
-  const existing = getTests(employerId)
+export async function seedSampleData(employerId: string): Promise<void> {
+  const existing = await getTests(employerId)
   if (existing.length > 0) return
   const sampleTest: Test = {
     id: generateId(),
@@ -443,5 +434,5 @@ export function seedSampleData(employerId: string): void {
       },
     ],
   }
-  saveTest(sampleTest)
+  await saveTest(sampleTest)
 }
